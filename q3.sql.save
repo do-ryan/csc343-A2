@@ -1,0 +1,31 @@
+-- Participate
+
+SET SEARCH_PATH TO parlgov;
+drop table if exists q3 cascade;
+
+-- You must not change this table definition.
+
+create table q3(
+        countryName varchar(50),
+        year int,
+        participationRatio real
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+DROP VIEW IF EXISTS intermediate_step CASCADE;
+
+-- Define views for your intermediate steps here.
+
+CREATE VIEW elections_in_range AS
+SELECT country_id, id election_id, year(e_date)
+FROM election
+WHERE year(e_date) >= 2001 AND year(e_date) <= 2016
+ 
+
+
+-- returns elections between 2001 and 2016 inclusive and their corresponding countries as well as their participation ratio
+
+-- the answer to the query 
+insert into q3 
+
